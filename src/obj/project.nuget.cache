@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zIj349ZQIf4=",
+  "dgSpecHash": "l+sDcrhjsPM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Oskar\\Github\\My-Code\\GHubBattery_v2\\src\\GHubBattery.csproj",
+  "projectFilePath": "C:\\Users\\Oskar\\Github\\GHubBattery\\src\\GHubBattery.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Oskar\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\Oskar\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",

@@ -1188,11 +1188,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Oskar\\Github\\My-Code\\GHubBattery_v2\\src\\GHubBattery.csproj",
+      "projectUniqueName": "C:\\Users\\Oskar\\Github\\GHubBattery\\src\\GHubBattery.csproj",
       "projectName": "GHubBattery",
-      "projectPath": "C:\\Users\\Oskar\\Github\\My-Code\\GHubBattery_v2\\src\\GHubBattery.csproj",
+      "projectPath": "C:\\Users\\Oskar\\Github\\GHubBattery\\src\\GHubBattery.csproj",
       "packagesPath": "C:\\Users\\Oskar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Oskar\\Github\\My-Code\\GHubBattery_v2\\src\\obj\\",
+      "outputPath": "C:\\Users\\Oskar\\Github\\GHubBattery\\src\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Oskar\\AppData\\Roaming\\NuGet\\NuGet.Config",

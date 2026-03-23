@@ -1,6 +1,0 @@
-C:\Users\Oskar\Github\My-Code\GHubBattery_v2\src\obj\Release\net8.0-windows\GHubBattery.csproj.AssemblyReference.cache
-C:\Users\Oskar\Github\My-Code\GHubBattery_v2\src\obj\Release\net8.0-windows\GHubBattery.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Oskar\Github\My-Code\GHubBattery_v2\src\obj\Release\net8.0-windows\GHubBattery.AssemblyInfoInputs.cache
-C:\Users\Oskar\Github\My-Code\GHubBattery_v2\src\obj\Release\net8.0-windows\GHubBattery.AssemblyInfo.cs
-C:\Users\Oskar\Github\My-Code\GHubBattery_v2\src\obj\Release\net8.0-windows\GHubBattery.csproj.CoreCompileInputs.cache
-C:\Users\Oskar\Github\My-Code\GHubBattery_v2\src\obj\Release\net8.0-windows\GHubBattery.sourcelink.json

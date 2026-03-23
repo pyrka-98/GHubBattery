@@ -1,13 +1,9 @@
 using System.Windows.Forms;
+using System.Drawing;
 using Microsoft.Extensions.Logging;
 
 namespace GHubBattery;
 
-/// <summary>
-/// Owns the Windows system-tray NotifyIcon.
-/// Wires battery state -> icon, tooltip, context menu, and balloon notifications.
-/// Respects AppSettings for thresholds, notification toggle, and multi-device display.
-/// </summary>
 public sealed class TrayManager : IDisposable
 {
     private const string AppName = "G HUB Battery";
@@ -22,6 +18,13 @@ public sealed class TrayManager : IDisposable
     private readonly HashSet<string> _notifiedLow = [];
     private Icon? _currentIcon;
     private bool  _disposed;
+
+    // Dark theme colors
+    private static readonly Color BgColor        = Color.FromArgb(30, 30, 30);
+    private static readonly Color TextColor       = Color.FromArgb(220, 220, 220);
+    private static readonly Color MutedColor      = Color.FromArgb(130, 130, 130);
+    private static readonly Color SeparatorColor  = Color.FromArgb(60, 60, 60);
+    private static readonly Color HoverColor      = Color.FromArgb(50, 120, 200);
 
     public TrayManager(
         BatteryStateStore store,
@@ -50,7 +53,7 @@ public sealed class TrayManager : IDisposable
             if (!connected)
             {
                 RefreshIcon(-1, false);
-                _tray.Text = $"{AppName} — G HUB offline";
+                _tray.Text = $"{AppName} - G HUB offline";
             }
             else
             {
@@ -64,7 +67,7 @@ public sealed class TrayManager : IDisposable
         InvokeOnUiThread(() =>
         {
             _tray.BalloonTipTitle = "Update available";
-            _tray.BalloonTipText  = $"G HUB Battery {version} is available. Click to open.";
+            _tray.BalloonTipText  = $"G HUB Battery {version} is available.";
             _tray.BalloonTipIcon  = ToolTipIcon.Info;
             _tray.ShowBalloonTip(8000);
             _tray.BalloonTipClicked += (_, _) =>
@@ -77,7 +80,7 @@ public sealed class TrayManager : IDisposable
 
     private void OnDeviceUpdated(DeviceBattery device)
     {
-        _ = _history.RecordAsync(device);   // fire-and-forget
+        _ = _history.RecordAsync(device);
 
         InvokeOnUiThread(() =>
         {
@@ -97,7 +100,7 @@ public sealed class TrayManager : IDisposable
 
     private void RefreshIcon(int percent, bool isCharging)
     {
-        var oldIcon   = _currentIcon;
+        var oldIcon = _currentIcon;
         try
         {
             _currentIcon = TrayIconRenderer.RenderMultiSize(percent, isCharging);
@@ -114,7 +117,7 @@ public sealed class TrayManager : IDisposable
     private void UpdateTooltip()
     {
         var all = _store.All();
-        if (all.Count == 0) { _tray.Text = $"{AppName} — no devices"; return; }
+        if (all.Count == 0) { _tray.Text = $"{AppName} - no devices"; return; }
 
         var lines   = all.Select(d => $"{TruncateName(d.DeviceName, 22)}: {d.Percentage}%{(d.IsCharging ? " charging" : "")}");
         var tooltip = $"{AppName}\n" + string.Join("\n", lines);
@@ -124,78 +127,102 @@ public sealed class TrayManager : IDisposable
     private void BuildContextMenu()
     {
         var menu = new ContextMenuStrip();
-        menu.Renderer = new FlatMenuRenderer();
+        menu.BackColor = BgColor;
+        menu.ForeColor = TextColor;
+        menu.Renderer  = new DarkMenuRenderer();
 
-        // Header
-        menu.Items.Add(new ToolStripLabel(AppName)
+        // ── Header ──
+        var header = new ToolStripLabel(AppName)
         {
-            Font      = new System.Drawing.Font("Segoe UI", 9f, System.Drawing.FontStyle.Bold),
-            ForeColor = System.Drawing.SystemColors.GrayText,
-        });
-        menu.Items.Add(new ToolStripSeparator());
+            Font      = new Font("Segoe UI", 9f, FontStyle.Bold),
+            ForeColor = MutedColor,
+            BackColor = BgColor,
+        };
+        menu.Items.Add(header);
+        menu.Items.Add(MakeSeparator());
 
-        // Device rows
+        // ── Device rows ──
         var all = _settings.ShowAllDevices ? _store.All() : (_store.Worst() is { } w ? [w] : []);
         if (all.Count == 0)
         {
-            menu.Items.Add(new ToolStripLabel("Waiting for G HUB...") { Enabled = false, ForeColor = System.Drawing.SystemColors.GrayText });
+            menu.Items.Add(new ToolStripLabel("Waiting for G HUB...")
+            {
+                Enabled   = false,
+                ForeColor = MutedColor,
+                BackColor = BgColor,
+            });
         }
         else
         {
             foreach (var d in all)
             {
-                var label = $"{TruncateName(d.DeviceName, 30)}   {d.Percentage}%{(d.IsCharging ? "  charging" : "")}{(d.Level == BatteryLevel.Critical ? "  !" : "")}";
-                var bmp   = TrayIconRenderer.Render(d.Percentage, d.IsCharging, 16).ToBitmap();
-                menu.Items.Add(new ToolStripMenuItem(label, bmp) { Enabled = false });
+                var label = $"{TruncateName(d.DeviceName, 24)}  {d.Percentage}%{(d.IsCharging ? " charging" : "")}{(d.Level == BatteryLevel.Critical ? " !" : "")}";
+                var item  = new ToolStripMenuItem(label)
+                {
+                    Enabled   = false,
+                    ForeColor = TextColor,
+                    BackColor = BgColor,
+                };
+                menu.Items.Add(item);
             }
         }
 
-        menu.Items.Add(new ToolStripSeparator());
+        menu.Items.Add(MakeSeparator());
 
-        // Refresh
-        var refresh = new ToolStripMenuItem("Refresh now");
-        refresh.Click += (_, _) => { RefreshIconFromStore(); UpdateTooltip(); BuildContextMenu(); };
-        menu.Items.Add(refresh);
+        // ── Actions ──
+        menu.Items.Add(MakeItem("Refresh now", () =>
+        {
+            RefreshIconFromStore();
+            UpdateTooltip();
+            BuildContextMenu();
+        }));
 
-        // History file
-        var histItem = new ToolStripMenuItem("Open battery history log");
-        histItem.Click += (_, _) =>
+        menu.Items.Add(MakeItem("Open battery history log", () =>
         {
             try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(_history.FilePath) { UseShellExecute = true }); }
             catch { }
-        };
-        menu.Items.Add(histItem);
+        }));
 
-        // Settings
-        var settingsItem = new ToolStripMenuItem("Settings...");
-        settingsItem.Click += (_, _) =>
+        menu.Items.Add(MakeItem("Settings...", () =>
         {
             using var win = new SettingsWindow(_settings);
             win.ShowDialog();
             RefreshIconFromStore();
             BuildContextMenu();
-        };
-        menu.Items.Add(settingsItem);
+        }));
 
-        // Startup toggle
-        var startupItem = new ToolStripMenuItem("Run at Windows startup") { Checked = _startup.IsEnabled() };
-        startupItem.Click += (_, _) =>
+        var startupItem = MakeItem("Run at Windows startup", () => { });
+        startupItem.Checked = _startup.IsEnabled();
+        startupItem.Click  += (_, _) =>
         {
             if (_startup.IsEnabled()) _startup.Disable(); else _startup.Enable();
             startupItem.Checked = _startup.IsEnabled();
         };
         menu.Items.Add(startupItem);
 
-        menu.Items.Add(new ToolStripSeparator());
-
-        var exit = new ToolStripMenuItem("Exit");
-        exit.Click += (_, _) => System.Windows.Forms.Application.Exit();
-        menu.Items.Add(exit);
+        menu.Items.Add(MakeSeparator());
+        menu.Items.Add(MakeItem("Exit", () => Application.Exit()));
 
         var old = _tray.ContextMenuStrip;
         _tray.ContextMenuStrip = menu;
         old?.Dispose();
     }
+
+    private static ToolStripMenuItem MakeItem(string text, Action onClick)
+    {
+        var item = new ToolStripMenuItem(text)
+        {
+            ForeColor = Color.FromArgb(220, 220, 220),
+            BackColor = Color.FromArgb(30, 30, 30),
+        };
+        item.Click += (_, _) => onClick();
+        return item;
+    }
+
+    private static ToolStripSeparator MakeSeparator() => new()
+    {
+        BackColor = Color.FromArgb(30, 30, 30),
+    };
 
     private void MaybeSendLowBatteryNotification(DeviceBattery d)
     {
@@ -238,26 +265,65 @@ public sealed class TrayManager : IDisposable
     }
 }
 
-internal sealed class FlatMenuRenderer : ToolStripProfessionalRenderer
+// ── Dark theme renderer ───────────────────────────────────────────────────────
+
+internal sealed class DarkMenuRenderer : ToolStripProfessionalRenderer
 {
-    public FlatMenuRenderer() : base(new FlatMenuColors()) { }
+    private static readonly Color Bg     = Color.FromArgb(30, 30, 30);
+    private static readonly Color Hover  = Color.FromArgb(50, 100, 180);
+    private static readonly Color Border = Color.FromArgb(60, 60, 60);
+
+    public DarkMenuRenderer() : base(new DarkMenuColors()) { }
+
+    protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
+    {
+        e.Graphics.Clear(Bg);
+    }
+
     protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
     {
-        if (!e.Item.Selected) { base.OnRenderMenuItemBackground(e); return; }
-        var r = new System.Drawing.Rectangle(2, 0, e.Item.Width - 4, e.Item.Height);
-        using var b = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(40, 120, 200, 255));
-        e.Graphics.FillRectangle(b, r);
+        var rect = new Rectangle(2, 0, e.Item.Width - 4, e.Item.Height);
+        using var brush = new SolidBrush(e.Item.Selected && e.Item.Enabled ? Hover : Bg);
+        e.Graphics.FillRectangle(brush, rect);
+    }
+
+    protected override void OnRenderSeparator(ToolStripSeparatorRenderEventArgs e)
+    {
+        int y = e.Item.Height / 2;
+        using var pen = new Pen(Color.FromArgb(60, 60, 60));
+        e.Graphics.DrawLine(pen, 4, y, e.Item.Width - 4, y);
+    }
+
+    protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
+    {
+        e.TextColor = e.Item.Enabled
+            ? Color.FromArgb(220, 220, 220)
+            : Color.FromArgb(110, 110, 110);
+        base.OnRenderItemText(e);
+    }
+
+    protected override void OnRenderImageMargin(ToolStripRenderEventArgs e)
+    {
+        using var brush = new SolidBrush(Bg);
+        e.Graphics.FillRectangle(brush, e.AffectedBounds);
+    }
+
+    protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
+    {
+        using var pen = new Pen(Border);
+        e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, e.ToolStrip.Width - 1, e.ToolStrip.Height - 1));
     }
 }
 
-internal sealed class FlatMenuColors : ProfessionalColorTable
+internal sealed class DarkMenuColors : ProfessionalColorTable
 {
-    public override System.Drawing.Color MenuItemSelectedGradientBegin => System.Drawing.Color.FromArgb(40, 120, 200, 255);
-    public override System.Drawing.Color MenuItemSelectedGradientEnd   => System.Drawing.Color.FromArgb(40, 120, 200, 255);
-    public override System.Drawing.Color MenuItemSelected              => System.Drawing.Color.FromArgb(40, 120, 200, 255);
-    public override System.Drawing.Color MenuBorder                    => System.Drawing.Color.FromArgb(60, 60, 60);
-    public override System.Drawing.Color ToolStripDropDownBackground   => System.Drawing.Color.FromArgb(30, 30, 30);
-    public override System.Drawing.Color ImageMarginGradientBegin      => System.Drawing.Color.FromArgb(30, 30, 30);
-    public override System.Drawing.Color ImageMarginGradientMiddle     => System.Drawing.Color.FromArgb(30, 30, 30);
-    public override System.Drawing.Color ImageMarginGradientEnd        => System.Drawing.Color.FromArgb(30, 30, 30);
+    private static readonly Color Bg = Color.FromArgb(30, 30, 30);
+    public override Color MenuItemSelectedGradientBegin => Color.FromArgb(50, 100, 180);
+    public override Color MenuItemSelectedGradientEnd   => Color.FromArgb(50, 100, 180);
+    public override Color MenuItemSelected              => Color.FromArgb(50, 100, 180);
+    public override Color MenuBorder                    => Color.FromArgb(60, 60, 60);
+    public override Color ToolStripDropDownBackground   => Bg;
+    public override Color ImageMarginGradientBegin      => Bg;
+    public override Color ImageMarginGradientMiddle     => Bg;
+    public override Color ImageMarginGradientEnd        => Bg;
 }

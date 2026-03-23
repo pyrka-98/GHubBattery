@@ -44,15 +44,29 @@ public sealed class GHubConnector : IAsyncDisposable
 
     public GHubConnector(ILogger<GHubConnector> log) => _log = log;
 
+    public async Task SendGetBatteryAsync(CancellationToken ct)
+    {
+        if (_ws?.State != WebSocketState.Open) return;
+        // Re-subscribe to battery path — G HUB will re-send current state
+        var msg   = new { msgId = Guid.NewGuid().ToString("N"), verb = "SUBSCRIBE", origin = Origin, path = "/battery/state/changed" };
+        var bytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(msg));
+        await _ws.SendAsync(bytes, WebSocketMessageType.Text, true, ct);
+        _log.LogDebug("Sent re-SUBSCRIBE -> /battery/state/changed");
+    }
+
     public async Task RunAsync(CancellationToken ct)
     {
         // Polling timer fires every 60s — sends GET /devices/list even if no push arrived
         using var pollTimer = new System.Timers.Timer(PollInterval.TotalMilliseconds);
         pollTimer.Elapsed += async (_, _) =>
+    {
+        try
         {
-            try { await SendGetDeviceListAsync(ct); }
-            catch { /* socket may be reconnecting, ignore */ }
-        };
+            await SendGetDeviceListAsync(ct);
+            await SendGetBatteryAsync(ct);
+        }
+        catch { }
+    };
         pollTimer.Start();
 
         while (!ct.IsCancellationRequested)

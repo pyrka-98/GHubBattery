@@ -2,7 +2,7 @@
 
 A lightweight Windows system tray app that shows your Logitech wireless headset battery percentage as a live colored icon — no hovering required.
 
-![green icon showing 72, amber showing 34, red showing 11](https://placeholder)
+![Tray icon showing battery percentage](assets/screenshot.png)
 
 ## Features
 
@@ -41,7 +41,7 @@ cd GHubBattery
 # Output: publish\GHubBattery.exe
 ```
 
-The publish script produces a self-contained single-file executable (~70 MB, includes the .NET 8 runtime).
+The publish script produces a self-contained single-file executable (~72 MB, includes the .NET 8 runtime).
 
 For development / quick iteration:
 
@@ -55,11 +55,11 @@ dotnet run
 Open `src\UpdateChecker.cs` and set your GitHub username and repo name:
 
 ```csharp
-private const string Owner = "YourGitHubUsername";
-private const string Repo  = "GHubBattery_v2";
+private const string Owner = "pyrka-98";
+private const string Repo  = "GHubBattery";
 ```
 
-The app checks for new releases 10 seconds after launch and shows a tray balloon if a newer version is available. To publish a new release, create a Git tag like `v1.1.0` and push it — GitHub Actions or a manual release will do the rest.
+The app checks for new releases 10 seconds after launch and shows a tray balloon if a newer version is available.
 
 ## Tray icon colors
 
@@ -153,6 +153,7 @@ G HUB exposes a local WebSocket server on `ws://localhost:9010`. The app:
 **Battery percentage not updating**
 - Wait up to 60 seconds for the polling fallback to kick in
 - Try right-click → Refresh now
+- Turn your device off & on
 
 **No devices shown**
 - Your device may use different field names in G HUB's API. Check `%LOCALAPPDATA%\GHubBatteryTray\crash.log` for errors
