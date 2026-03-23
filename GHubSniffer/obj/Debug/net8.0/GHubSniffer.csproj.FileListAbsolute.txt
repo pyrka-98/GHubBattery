@@ -1,0 +1,15 @@
+C:\Users\Oskar\Github\My-Code\GHubSniffer\bin\Debug\net8.0\GHubSniffer.exe
+C:\Users\Oskar\Github\My-Code\GHubSniffer\bin\Debug\net8.0\GHubSniffer.deps.json
+C:\Users\Oskar\Github\My-Code\GHubSniffer\bin\Debug\net8.0\GHubSniffer.runtimeconfig.json
+C:\Users\Oskar\Github\My-Code\GHubSniffer\bin\Debug\net8.0\GHubSniffer.dll
+C:\Users\Oskar\Github\My-Code\GHubSniffer\bin\Debug\net8.0\GHubSniffer.pdb
+C:\Users\Oskar\Github\My-Code\GHubSniffer\obj\Debug\net8.0\GHubSniffer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Oskar\Github\My-Code\GHubSniffer\obj\Debug\net8.0\GHubSniffer.AssemblyInfoInputs.cache
+C:\Users\Oskar\Github\My-Code\GHubSniffer\obj\Debug\net8.0\GHubSniffer.AssemblyInfo.cs
+C:\Users\Oskar\Github\My-Code\GHubSniffer\obj\Debug\net8.0\GHubSniffer.csproj.CoreCompileInputs.cache
+C:\Users\Oskar\Github\My-Code\GHubSniffer\obj\Debug\net8.0\GHubSniffer.sourcelink.json
+C:\Users\Oskar\Github\My-Code\GHubSniffer\obj\Debug\net8.0\GHubSniffer.dll
+C:\Users\Oskar\Github\My-Code\GHubSniffer\obj\Debug\net8.0\refint\GHubSniffer.dll
+C:\Users\Oskar\Github\My-Code\GHubSniffer\obj\Debug\net8.0\GHubSniffer.pdb
+C:\Users\Oskar\Github\My-Code\GHubSniffer\obj\Debug\net8.0\GHubSniffer.genruntimeconfig.cache
+C:\Users\Oskar\Github\My-Code\GHubSniffer\obj\Debug\net8.0\ref\GHubSniffer.dll

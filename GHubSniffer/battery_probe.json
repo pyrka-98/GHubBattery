@@ -1,0 +1,48 @@
+// PATH: /devices/dev00000000/battery
+{
+  "msgId": "b614b437088a48038d526fd960dc18a3",
+  "verb": "GET",
+  "path": "/devices/dev00000000/battery",
+  "origin": "GHubSniffer",
+  "result": {
+    "code": "NO_SUCH_PATH",
+    "what": "message path \u0027/devices/dev00000000/battery\u0027 not found."
+  }
+}
+
+// PATH: /battery/dev00000000
+{
+  "msgId": "f558abc3a4cd4a4e89070be3976e0a84",
+  "verb": "GET",
+  "path": "/battery/dev00000000",
+  "origin": "GHubSniffer",
+  "result": {
+    "code": "NO_SUCH_PATH",
+    "what": "message path \u0027/battery/dev00000000\u0027 not found."
+  }
+}
+
+// PATH: /battery/status
+{
+  "msgId": "67426480ba484a3eac6e59040cea5aaa",
+  "verb": "GET",
+  "path": "/battery/status",
+  "origin": "GHubSniffer",
+  "result": {
+    "code": "NO_SUCH_PATH",
+    "what": "message path \u0027/battery/status\u0027 not found."
+  }
+}
+
+// PATH: /devices/battery
+{
+  "msgId": "226b065c0c2a43ff8479315d875bddd8",
+  "verb": "GET",
+  "path": "/devices/battery",
+  "origin": "GHubSniffer",
+  "result": {
+    "code": "NO_SUCH_PATH",
+    "what": "message path \u0027/devices/battery\u0027 not found."
+  }
+}
+

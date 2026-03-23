@@ -1,0 +1,1163 @@
+// PATH: /devices/state/changed
+{
+  "msgId": "",
+  "verb": "OPTIONS",
+  "path": "/",
+  "origin": "backend"
+}
+
+// PATH: /devices/state/changed
+{
+  "msgId": "3347c780118349fe9e6d0914ba77e325",
+  "verb": "GET",
+  "path": "/devices/state/changed",
+  "origin": "GHubSniffer",
+  "result": {
+    "code": "INVALID_ARG",
+    "what": "no handler for \u0027GET /devices/state/changed\u0027."
+  }
+}
+
+// PATH: /devices
+{
+  "msgId": "",
+  "verb": "OPTIONS",
+  "path": "/",
+  "origin": "backend"
+}
+
+// PATH: /devices
+{
+  "msgId": "999094b97b80424d9f92871c9465ccba",
+  "verb": "GET",
+  "path": "/devices",
+  "origin": "GHubSniffer",
+  "result": {
+    "code": "INVALID_ARG",
+    "what": "no handler for \u0027GET /devices\u0027."
+  }
+}
+
+// PATH: /devices/list
+{
+  "msgId": "",
+  "verb": "OPTIONS",
+  "path": "/",
+  "origin": "backend"
+}
+
+// PATH: /devices/list
+{
+  "msgId": "4b6bf76c874f457bb662bbf0fc797ccb",
+  "verb": "GET",
+  "path": "/devices/list",
+  "origin": "GHubSniffer",
+  "result": {
+    "code": "SUCCESS",
+    "what": ""
+  },
+  "payload": {
+    "@type": "type.googleapis.com/logi.protocol.devices.Device.Info.List",
+    "deviceInfos": [
+      {
+        "id": "dev00000000",
+        "pid": 2746,
+        "fwInfo": [
+          {
+            "interfaceId": "046d_0aba",
+            "firmwareVersion": "112.1.203",
+            "firmwareName": "U112",
+            "firmwareFriendlyName": "",
+            "firmwareRevision": 1,
+            "hardwareRevision": 0
+          }
+        ],
+        "isSubdevice": false,
+        "parentId": "",
+        "state": "ACTIVE",
+        "onboardMode": false,
+        "individualMode": false,
+        "resourcesAvailable": true,
+        "connectionType": "USB",
+        "hasWirelessInterface": false,
+        "displayConnectionType": "LIGHTSPEED",
+        "deviceType": "HEADSET",
+        "deviceFamily": "",
+        "deviceModel": "pro_71_gaming_wireless_headset",
+        "deviceBaseModel": "pro_71_gaming_wireless_headset",
+        "displayName": "PRO X WIRELESS",
+        "extendedDisplayName": "PRO X Wireless Gaming Headset",
+        "slotPrefix": "proxwirelessheadset",
+        "thumbnail": "pipeline://core_assets/thumbnails/pro_headset.png",
+        "stringPackage": "",
+        "assetsPackages": {
+          "analogOnboardingPackage": ""
+        },
+        "deviceExt": 0,
+        "deviceUnitId": "",
+        "deviceSignature": "HEADSET.pro_71_gaming_wireless_headset",
+        "givenName": "",
+        "capabilities": {
+          "audio": {
+            "hasDts": false,
+            "hasDolby": false,
+            "hasDtsHx2e": true,
+            "hasBlueVoice1": true,
+            "hasBlueVoice2": false,
+            "hasLogivoice": false,
+            "hasSamplerApo": false,
+            "hasAutomaticGainControl": false,
+            "hasMicrophoneVolumeFeatures": false,
+            "syncMicSettingsCardGainWithSystem": false,
+            "hasProEq": false,
+            "hasOnboardEq": false,
+            "hasOnboardProEq": false,
+            "hasCenturionEq": false,
+            "hasCenturionOnboardEq": false,
+            "hasLightspeedAux": false,
+            "hasCenturionVolumeInAcoustics": false,
+            "hasAudioMixingMatrix": false,
+            "hasMicrophoneTest": false,
+            "hasEq": true,
+            "hasAcoustics": true,
+            "hasEqualizerSwitchView": false,
+            "hasHardwareNoiseReduction": false,
+            "hasCenturionOnboardNoiseReduction": false,
+            "hasHeadsetTones": false,
+            "hasSidetoneInSettings": false,
+            "hasCenturionVolumeInSettings": false,
+            "hasNoiseExposureInSettings": false,
+            "hasHidMic": false,
+            "hasDenoiser": false,
+            "hasOnboardProfiles": false,
+            "hasHeadphoneJack": false,
+            "hasOptionalHeadphoneJack": false,
+            "micLightingOptOut": false,
+            "hasMicFunctionalLighting": false,
+            "hasLatchingMuteButton": false,
+            "hasMicLedSupport": false,
+            "hasMicrophoneSettings": false,
+            "hasMicrophonePreset": false,
+            "hasAutomaticPatternControl": false,
+            "hasSimpleMicTest": false
+          },
+          "sleepTimer": false,
+          "mstateSupport": {
+            "count": 1,
+            "timeOut": 0
+          },
+          "fnInversion": false,
+          "presentSplashScreen": false,
+          "customizableColor": false,
+          "wirelessReportRate": false,
+          "hybridEngine": false,
+          "advancedSleepTimer": false,
+          "angleSnapping": false,
+          "excludeGShift": false,
+          "hostRemovalSupport": false,
+          "hostInfos": false,
+          "gkeyLayout": "INVALID_GKEY_LAYOUT",
+          "hasBatteryStatus": true,
+          "powerOffTimer": true,
+          "requiresBackupForDfu": false,
+          "unifiedBattery": false,
+          "dpiLighting": false,
+          "hasGlobalDamping": false,
+          "nonInteractive": false,
+          "chargepadCompatible": false,
+          "individuality": false,
+          "defaultSlotFormat": "INVALID_FORMAT",
+          "fnToggle": false,
+          "isFullHidppWheel": false,
+          "hasConfigurationProfiles": false,
+          "disableCenterSpring": false,
+          "hasOnboardDeviceName": false,
+          "systemTraySupport": false,
+          "cidBasedGameModeSupport": false,
+          "depotNotRequired": false,
+          "ledBrightness": false,
+          "autoSleep": false,
+          "hasFactoryReset": false,
+          "disableLightingViewMenu": false,
+          "dpiVersion": 0,
+          "hasWiredReportRate": false,
+          "keyboardSize": "UNKNOWN",
+          "uiThemeVersion": 0,
+          "deviceNameMaxLength": 0,
+          "hasBatteryEcoMode": false,
+          "hasTotalUsageTime": false,
+          "iprofileDatasyncSupport": false,
+          "modeMatchingAlgorithm": "DEFAULT",
+          "useRealSoc": false,
+          "hasEuPowerModeControl": false,
+          "hasBunnyHoppingSupport": false,
+          "hasSpatialSound": false,
+          "hasPerformanceReportRate": false,
+          "hasRename": false,
+          "deviceSettingsVersion": 0,
+          "hasOnboardEditSupport": false,
+          "hasCustomDeviceNameStyle": false,
+          "hasKeepAliveSupport": false,
+          "hasBoolStates": false
+        },
+        "activeInterfaces": [
+          {
+            "type": "DEVIO",
+            "id": "046d_0aba",
+            "pid": 2746,
+            "modelId": 0,
+            "extendedModel": 0,
+            "serialNumber": "",
+            "path": "\\\\?\\hid#vid_046d\u0026pid_0aba\u0026mi_03\u0026col02#9\u00261c515671\u00260\u00260001#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+            "containerId": "8ea4530c-eb3d-11f0-a7cb-2cf05d6e6429",
+            "deviceType": "HEADSET",
+            "deviceName": "PRO X Wireless Gaming Headset",
+            "keyboardLayout": "INVALID_LAYOUT",
+            "firmwareVersion": "112.1.203",
+            "firmwareName": "U112",
+            "firmwareRevision": 1,
+            "hardwareRevision": 0,
+            "unitId": "",
+            "fwEntities": {
+              "U112": "112.1.203"
+            },
+            "connectionType": "USB",
+            "hasOnboardMode": false,
+            "parentPath": "",
+            "hashedSerialNumber": "",
+            "hashedUnitId": ""
+          },
+          {
+            "type": "AUDIO",
+            "id": "046d_0aba",
+            "pid": 0,
+            "modelId": 0,
+            "extendedModel": 0,
+            "serialNumber": "",
+            "path": "",
+            "containerId": "8ea4530c-eb3d-11f0-a7cb-2cf05d6e6429",
+            "deviceType": "INVALID_TYPE",
+            "deviceName": "4 \u2014 Logitech PRO X Wireless Gaming Headset",
+            "keyboardLayout": "INVALID_LAYOUT",
+            "firmwareVersion": "",
+            "firmwareName": "",
+            "firmwareRevision": 0,
+            "hardwareRevision": 0,
+            "unitId": "",
+            "fwEntities": {},
+            "connectionType": "VIRTUAL",
+            "hasOnboardMode": false,
+            "parentPath": "",
+            "hashedSerialNumber": "",
+            "hashedUnitId": ""
+          }
+        ],
+        "slots": {
+          "proxwirelessheadset_acoustics": {
+            "id": "proxwirelessheadset_acoustics",
+            "attribute": "ACOUSTICS",
+            "disabled": false,
+            "defaultCard": "9c1acc93-6ba2-317b-95ff-5b24bb65c05b"
+          },
+          "proxwirelessheadset_microphone_settings": {
+            "id": "proxwirelessheadset_microphone_settings",
+            "attribute": "MICROPHONE_SETTINGS",
+            "disabled": false,
+            "defaultCard": "9b85425b-8c71-4b15-808c-120e0aba0000"
+          },
+          "proxwirelessheadset_equalizer": {
+            "id": "proxwirelessheadset_equalizer",
+            "attribute": "EQUALIZER",
+            "disabled": false,
+            "defaultCard": "05525ad1-71a4-45c4-aafa-d56ad1429f32"
+          },
+          "proxwirelessheadset_blue_voice_settings": {
+            "id": "proxwirelessheadset_blue_voice_settings",
+            "attribute": "BLUE_VOICE_SETTINGS",
+            "disabled": false,
+            "defaultCard": "259c0286-80b9-4f65-8fa8-da7789e8b762"
+          }
+        },
+        "configurations": {},
+        "path": "\\\\?\\hid#vid_046d\u0026pid_0aba\u0026mi_03\u0026col02#9\u00261c515671\u00260\u00260001#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+        "parentPath": ""
+      },
+      {
+        "id": "dev00000001",
+        "pid": 49305,
+        "fwInfo": [
+          {
+            "interfaceId": "046d_c099",
+            "firmwareVersion": "160.0.9",
+            "firmwareName": "U160",
+            "firmwareFriendlyName": "",
+            "firmwareRevision": 0,
+            "hardwareRevision": 0
+          }
+        ],
+        "isSubdevice": false,
+        "parentId": "",
+        "state": "ACTIVE",
+        "onboardMode": false,
+        "individualMode": false,
+        "resourcesAvailable": true,
+        "connectionType": "USB",
+        "hasWirelessInterface": false,
+        "displayConnectionType": "USB",
+        "deviceType": "MOUSE",
+        "deviceFamily": "",
+        "deviceModel": "g502x",
+        "deviceBaseModel": "g502x",
+        "displayName": "G502 X",
+        "extendedDisplayName": "G502 X Gaming Mouse",
+        "slotPrefix": "g502x",
+        "thumbnail": "pipeline://core_assets/thumbnails/be164e07-3ebb-42e3-a9f1-c1cd7e9b530b",
+        "stringPackage": "81b39626-9f66-4cc4-9c87-2137b1d1b078/strings",
+        "assetsPackages": {
+          "analogOnboardingPackage": ""
+        },
+        "deviceExt": 0,
+        "deviceUnitId": "754994432",
+        "deviceSignature": "MOUSE.g502x.0.754994432",
+        "givenName": "",
+        "capabilities": {
+          "sleepTimer": false,
+          "mstateSupport": {
+            "count": 1,
+            "timeOut": 0
+          },
+          "fnInversion": false,
+          "presentSplashScreen": true,
+          "customizableColor": false,
+          "wirelessReportRate": false,
+          "dpiIndicatorLed": {
+            "zoneType": "INVALID",
+            "steps": {
+              "5": {
+                "tag": "",
+                "hex": "#DC14FF"
+              },
+              "1": {
+                "tag": "",
+                "hex": "#FFFFFF"
+              },
+              "2": {
+                "tag": "",
+                "hex": "#FF6400"
+              },
+              "3": {
+                "tag": "",
+                "hex": "#28FFDC"
+              },
+              "4": {
+                "tag": "",
+                "hex": "#FFFF14"
+              }
+            }
+          },
+          "hybridEngine": false,
+          "advancedSleepTimer": false,
+          "onboardProfiles": {
+            "disableProfileNaming": false,
+            "profilesAlwaysActive": false,
+            "supportsOnboardMode": true,
+            "useFileSystem": false,
+            "prioritizeSoftwareDefaults": false
+          },
+          "angleSnapping": false,
+          "excludeGShift": false,
+          "hostRemovalSupport": false,
+          "scrollControls": {
+            "scrollUp": 13,
+            "scrollDown": 12
+          },
+          "hostInfos": false,
+          "gkeyLayout": "INVALID_GKEY_LAYOUT",
+          "hasBatteryStatus": false,
+          "powerOffTimer": false,
+          "requiresBackupForDfu": false,
+          "unifiedBattery": false,
+          "dpiLighting": false,
+          "hasGlobalDamping": false,
+          "nonInteractive": false,
+          "chargepadCompatible": false,
+          "individuality": false,
+          "defaultSlotFormat": "INVALID_FORMAT",
+          "fnToggle": false,
+          "isFullHidppWheel": false,
+          "hasConfigurationProfiles": false,
+          "disableCenterSpring": false,
+          "hasOnboardDeviceName": false,
+          "systemTraySupport": false,
+          "cidBasedGameModeSupport": false,
+          "depotNotRequired": false,
+          "ledBrightness": false,
+          "autoSleep": false,
+          "hasFactoryReset": false,
+          "disableLightingViewMenu": false,
+          "dpiVersion": 0,
+          "hasWiredReportRate": false,
+          "keyboardSize": "UNKNOWN",
+          "uiThemeVersion": 0,
+          "deviceNameMaxLength": 0,
+          "hasBatteryEcoMode": false,
+          "hasTotalUsageTime": false,
+          "iprofileDatasyncSupport": false,
+          "modeMatchingAlgorithm": "DEFAULT",
+          "useRealSoc": false,
+          "hasEuPowerModeControl": false,
+          "hasBunnyHoppingSupport": false,
+          "hasSpatialSound": false,
+          "hasPerformanceReportRate": false,
+          "hasRename": false,
+          "deviceSettingsVersion": 0,
+          "hasOnboardEditSupport": false,
+          "hasCustomDeviceNameStyle": false,
+          "hasKeepAliveSupport": false,
+          "hasBoolStates": false
+        },
+        "activeInterfaces": [
+          {
+            "type": "DEVIO",
+            "id": "046d_c099",
+            "pid": 49305,
+            "modelId": 0,
+            "extendedModel": 0,
+            "serialNumber": "754994432",
+            "path": "usb\\vid_046d\u0026pid_c099\u0026mi_01\\6\u00262c3454b5\u00260\u00260001",
+            "containerId": "b13ac647-06ad-5862-8dc7-3597daee5b3d",
+            "deviceType": "MOUSE",
+            "deviceName": "G502 X",
+            "keyboardLayout": "INVALID_LAYOUT",
+            "firmwareVersion": "160.0.9",
+            "firmwareName": "U160",
+            "firmwareRevision": 0,
+            "hardwareRevision": 0,
+            "unitId": "754994432",
+            "fwEntities": {
+              "U160": "160.0.9"
+            },
+            "connectionType": "USB",
+            "hasOnboardMode": true,
+            "parentPath": "",
+            "hashedSerialNumber": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "hashedUnitId": "fbf850829ab9dd97721b0a89092510569353835806023346d7d81f6d933f94ad"
+          }
+        ],
+        "slots": {
+          "g502x_g5_m1": {
+            "id": "g502x_g5_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-040300000000"
+          },
+          "g502x_g1_m1": {
+            "id": "g502x_g1_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-020100000000"
+          },
+          "g502x_g6_m1": {
+            "id": "g502x_g6_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-020500000000"
+          },
+          "g502x_g9_m1_shifted": {
+            "id": "g502x_g9_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_g8_m1": {
+            "id": "g502x_g8_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-040c00000000"
+          },
+          "g502x_g2_m1_shifted": {
+            "id": "g502x_g2_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_g7_m1": {
+            "id": "g502x_g7_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-040b00000000"
+          },
+          "g502x_g10_m1_shifted": {
+            "id": "g502x_g10_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_scroll1_m1_shifted": {
+            "id": "g502x_scroll1_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_scroll1_m1": {
+            "id": "g502x_scroll1_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-040900000000"
+          },
+          "g502x_g3_m1": {
+            "id": "g502x_g3_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-020300000000"
+          },
+          "g502x_g3_m1_shifted": {
+            "id": "g502x_g3_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_g1_m1_shifted": {
+            "id": "g502x_g1_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_g7_m1_shifted": {
+            "id": "g502x_g7_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_g10_m1": {
+            "id": "g502x_g10_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-040100000000"
+          },
+          "g502x_g4_m1": {
+            "id": "g502x_g4_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-020400000000"
+          },
+          "g502x_g6_m1_shifted": {
+            "id": "g502x_g6_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_g11_m1_shifted": {
+            "id": "g502x_g11_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_g11_m1": {
+            "id": "g502x_g11_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-040200000000"
+          },
+          "g502x_scroll2_m1": {
+            "id": "g502x_scroll2_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-040a00000000"
+          },
+          "g502x_g8_m1_shifted": {
+            "id": "g502x_g8_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_g4_m1_shifted": {
+            "id": "g502x_g4_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_g5_m1_shifted": {
+            "id": "g502x_g5_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_g2_m1": {
+            "id": "g502x_g2_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-020200000000"
+          },
+          "g502x_scroll2_m1_shifted": {
+            "id": "g502x_scroll2_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g502x_g9_m1": {
+            "id": "g502x_g9_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090100000000"
+          },
+          "g502x_mouse_settings": {
+            "id": "g502x_mouse_settings",
+            "attribute": "MOUSE_SETTINGS",
+            "disabled": false,
+            "defaultCard": "afb4863d-f004-42f8-9db5-7355406aabf7"
+          }
+        },
+        "configurations": {},
+        "path": "usb\\vid_046d\u0026pid_c099\u0026mi_01\\6\u00262c3454b5\u00260\u00260001",
+        "parentPath": ""
+      },
+      {
+        "id": "dev00000002",
+        "pid": 49980,
+        "fwInfo": [
+          {
+            "interfaceId": "046d_c33c",
+            "firmwareVersion": "119.1.14",
+            "firmwareName": "U119",
+            "firmwareFriendlyName": "",
+            "firmwareRevision": 1,
+            "hardwareRevision": 0
+          }
+        ],
+        "isSubdevice": false,
+        "parentId": "",
+        "state": "ACTIVE",
+        "onboardMode": false,
+        "individualMode": false,
+        "resourcesAvailable": true,
+        "connectionType": "USB",
+        "hasWirelessInterface": false,
+        "displayConnectionType": "USB",
+        "deviceType": "KEYBOARD",
+        "deviceFamily": "",
+        "deviceModel": "g512_ext6",
+        "deviceBaseModel": "g513",
+        "displayName": "G512",
+        "extendedDisplayName": "G512 Carbon GX Blue",
+        "slotPrefix": "g513",
+        "thumbnail": "pipeline://core_assets/thumbnails/g513_ext3.png",
+        "stringPackage": "",
+        "assetsPackages": {
+          "analogOnboardingPackage": ""
+        },
+        "deviceExt": 6,
+        "deviceUnitId": "825313043",
+        "deviceSignature": "KEYBOARD.g513.6.825313043",
+        "givenName": "",
+        "capabilities": {
+          "lightingSupport": {
+            "deviceCategory": "KEYBOARD_RGB_PER_KEY",
+            "typeMap": {
+              "PERKEY_KEYBOARD": "HID_KEYBOARD",
+              "ZONE_PRIMARY": "PRIMARY",
+              "PERKEY_INDICATOR": "KEYBOARD_OTHER"
+            },
+            "zones": [
+              {
+                "zoneType": "ZONE_PRIMARY",
+                "supportedEffects": [
+                  {
+                    "id": "OFF",
+                    "syncable": true,
+                    "fixedIntensity": false,
+                    "signature": false,
+                    "inactivityOnly": false,
+                    "name": "",
+                    "fixedRate": false,
+                    "fixedSaturation": false,
+                    "derivativeOverrides": {}
+                  },
+                  {
+                    "id": "FIXED",
+                    "syncable": true,
+                    "fixedIntensity": false,
+                    "signature": false,
+                    "inactivityOnly": false,
+                    "name": "",
+                    "fixedRate": false,
+                    "fixedSaturation": false,
+                    "derivativeOverrides": {}
+                  },
+                  {
+                    "id": "CYCLE",
+                    "syncable": true,
+                    "fixedIntensity": true,
+                    "signature": false,
+                    "inactivityOnly": false,
+                    "name": "",
+                    "fixedRate": false,
+                    "fixedSaturation": false,
+                    "derivativeOverrides": {}
+                  },
+                  {
+                    "id": "COLORWAVE",
+                    "syncable": false,
+                    "fixedIntensity": true,
+                    "signature": false,
+                    "inactivityOnly": false,
+                    "name": "",
+                    "fixedRate": false,
+                    "fixedSaturation": false,
+                    "derivativeOverrides": {}
+                  },
+                  {
+                    "id": "BREATHING",
+                    "syncable": true,
+                    "fixedIntensity": true,
+                    "signature": false,
+                    "inactivityOnly": false,
+                    "name": "",
+                    "fixedRate": false,
+                    "fixedSaturation": false,
+                    "derivativeOverrides": {}
+                  },
+                  {
+                    "id": "RIPPLE",
+                    "syncable": false,
+                    "fixedIntensity": false,
+                    "signature": false,
+                    "inactivityOnly": false,
+                    "name": "",
+                    "fixedRate": false,
+                    "fixedSaturation": false,
+                    "derivativeOverrides": {}
+                  }
+                ],
+                "onboardCluster": "CLUSTER_DEFAULT"
+              }
+            ],
+            "isMonochrome": false,
+            "isPerKey": true,
+            "persistence": {
+              "zoneEffects": false,
+              "perKeyFixed": true
+            },
+            "brightnessLevels": [],
+            "powerSavingEffect": false,
+            "lowBatteryEffect": false,
+            "brightnessPercentage": false,
+            "gamma": false,
+            "firmwareOnly": false,
+            "offRamp": false,
+            "activeDimming": false,
+            "hasPositionalEffect": false,
+            "hasPastelPalette": false,
+            "hasRingLeds": false,
+            "hasMasterSwitch": false,
+            "needKeepAliveSignal": false,
+            "hasPcStateSync": false,
+            "btSoftwareEffects": false,
+            "overallBrightness": false,
+            "combinedLightingSettings": false,
+            "hasLowSmoothSpeed": false,
+            "defaultSmoothSpeed": 0,
+            "hasLimitedLowBatteryEffects": false,
+            "hasReportRateLimitedLighting": false,
+            "useFwInactivityLighting": false,
+            "hasLightBar": false,
+            "multiLightingZone": false,
+            "globalOverallBrightness": false
+          },
+          "sleepTimer": false,
+          "mstateSupport": {
+            "count": 1,
+            "timeOut": 0
+          },
+          "reportHidControls": {
+            "pages": [
+              {
+                "page": 7,
+                "usages": [
+                  {
+                    "usage": 58,
+                    "button": 1
+                  },
+                  {
+                    "usage": 59,
+                    "button": 2
+                  },
+                  {
+                    "usage": 60,
+                    "button": 3
+                  },
+                  {
+                    "usage": 61,
+                    "button": 4
+                  },
+                  {
+                    "usage": 62,
+                    "button": 5
+                  },
+                  {
+                    "usage": 63,
+                    "button": 6
+                  },
+                  {
+                    "usage": 64,
+                    "button": 7
+                  },
+                  {
+                    "usage": 65,
+                    "button": 8
+                  },
+                  {
+                    "usage": 66,
+                    "button": 9
+                  },
+                  {
+                    "usage": 67,
+                    "button": 10
+                  },
+                  {
+                    "usage": 68,
+                    "button": 11
+                  },
+                  {
+                    "usage": 69,
+                    "button": 12
+                  }
+                ]
+              }
+            ]
+          },
+          "fnInversion": true,
+          "presentSplashScreen": false,
+          "customizableColor": false,
+          "wirelessReportRate": false,
+          "hybridEngine": false,
+          "advancedSleepTimer": false,
+          "onboardProfiles": {
+            "disableProfileNaming": false,
+            "profilesAlwaysActive": false,
+            "supportsOnboardMode": true,
+            "useFileSystem": false,
+            "prioritizeSoftwareDefaults": false
+          },
+          "angleSnapping": false,
+          "excludeGShift": false,
+          "hostRemovalSupport": false,
+          "hostInfos": false,
+          "gkeyLayout": "INVALID_GKEY_LAYOUT",
+          "hasBatteryStatus": false,
+          "powerOffTimer": false,
+          "requiresBackupForDfu": false,
+          "unifiedBattery": false,
+          "dpiLighting": false,
+          "hasGlobalDamping": false,
+          "nonInteractive": false,
+          "chargepadCompatible": false,
+          "individuality": false,
+          "defaultSlotFormat": "INVALID_FORMAT",
+          "fnToggle": false,
+          "isFullHidppWheel": false,
+          "hasConfigurationProfiles": false,
+          "disableCenterSpring": false,
+          "hasOnboardDeviceName": false,
+          "systemTraySupport": false,
+          "cidBasedGameModeSupport": false,
+          "depotNotRequired": false,
+          "ledBrightness": false,
+          "autoSleep": false,
+          "hasFactoryReset": false,
+          "disableLightingViewMenu": false,
+          "dpiVersion": 0,
+          "hasWiredReportRate": false,
+          "keyboardSize": "UNKNOWN",
+          "uiThemeVersion": 0,
+          "deviceNameMaxLength": 0,
+          "hasBatteryEcoMode": false,
+          "hasTotalUsageTime": false,
+          "iprofileDatasyncSupport": false,
+          "modeMatchingAlgorithm": "DEFAULT",
+          "useRealSoc": false,
+          "hasEuPowerModeControl": false,
+          "hasBunnyHoppingSupport": false,
+          "hasSpatialSound": false,
+          "hasPerformanceReportRate": false,
+          "hasRename": false,
+          "deviceSettingsVersion": 0,
+          "hasOnboardEditSupport": false,
+          "hasCustomDeviceNameStyle": false,
+          "hasKeepAliveSupport": false,
+          "hasBoolStates": false
+        },
+        "activeInterfaces": [
+          {
+            "type": "DEVIO",
+            "id": "046d_c33c",
+            "pid": 49980,
+            "modelId": 0,
+            "extendedModel": 6,
+            "serialNumber": "825313043",
+            "path": "usb\\vid_046d\u0026pid_c33c\u0026mi_01\\7\u00261955fcf2\u00260\u00260001",
+            "containerId": "7a2356c1-c1ae-5eae-930e-88645a3b26d4",
+            "deviceType": "KEYBOARD",
+            "deviceName": "G512 RGB MECHANICAL GAMING KEYBOARD",
+            "keyboardLayout": "INTERNATIONAL_2",
+            "firmwareVersion": "119.1.14",
+            "firmwareName": "U119",
+            "firmwareRevision": 1,
+            "hardwareRevision": 0,
+            "unitId": "825313043",
+            "fwEntities": {
+              "U119": "119.1.14"
+            },
+            "connectionType": "USB",
+            "hasOnboardMode": false,
+            "parentPath": "",
+            "hashedSerialNumber": "",
+            "hashedUnitId": "508bf2a4ae8a21780071397baeaad68d7c711059c715e5593ad460c3c3243ec6"
+          }
+        ],
+        "slots": {
+          "g513_g6_m1": {
+            "id": "g513_g6_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-013f00000000"
+          },
+          "g513_g9_m1_shifted": {
+            "id": "g513_g9_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_g6_m1_shifted": {
+            "id": "g513_g6_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_g9_m1": {
+            "id": "g513_g9_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-014200000000"
+          },
+          "g513_g12_m1_shifted": {
+            "id": "g513_g12_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_g2_m1": {
+            "id": "g513_g2_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-013b00000000"
+          },
+          "g513_g1_m1_shifted": {
+            "id": "g513_g1_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_g5_m1": {
+            "id": "g513_g5_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-013e00000000"
+          },
+          "g513_g10_m1": {
+            "id": "g513_g10_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-014300000000"
+          },
+          "g513_g2_m1_shifted": {
+            "id": "g513_g2_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_g12_m1": {
+            "id": "g513_g12_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-014500000000"
+          },
+          "g513_g1_m1": {
+            "id": "g513_g1_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-013a00000000"
+          },
+          "g513_g11_m1_shifted": {
+            "id": "g513_g11_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_g10_m1_shifted": {
+            "id": "g513_g10_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_g11_m1": {
+            "id": "g513_g11_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-014400000000"
+          },
+          "g513_g5_m1_shifted": {
+            "id": "g513_g5_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_lighting_setting_firmware": {
+            "id": "g513_lighting_setting_firmware",
+            "attribute": "FIRMWARE_LIGHTING_SETTINGS",
+            "disabled": false,
+            "defaultCard": "9b85425b-8c71-4b15-808c-1206c33c0000"
+          },
+          "g513_g4_m1_shifted": {
+            "id": "g513_g4_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_g7_m1_shifted": {
+            "id": "g513_g7_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_g3_m1_shifted": {
+            "id": "g513_g3_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_disable_keys": {
+            "id": "g513_disable_keys",
+            "attribute": "DISABLE_KEY_SETTINGS",
+            "disabled": false,
+            "defaultCard": "9b85425b-8c71-4b15-808c-1205c33c0000"
+          },
+          "g513_g3_m1": {
+            "id": "g513_g3_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-013c00000000"
+          },
+          "g513_g7_m1": {
+            "id": "g513_g7_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-014000000000"
+          },
+          "g513_g8_m1_shifted": {
+            "id": "g513_g8_m1_shifted",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-090700000000"
+          },
+          "g513_g4_m1": {
+            "id": "g513_g4_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-013d00000000"
+          },
+          "g513_g8_m1": {
+            "id": "g513_g8_m1",
+            "attribute": "MACRO_PLAYBACK",
+            "disabled": false,
+            "defaultCard": "0f82f693-5b78-4cf5-867e-014100000000"
+          }
+        },
+        "configurations": {},
+        "path": "usb\\vid_046d\u0026pid_c33c\u0026mi_01\\7\u00261955fcf2\u00260\u00260001",
+        "parentPath": ""
+      }
+    ]
+  }
+}
+
+// PATH: /battery
+{
+  "msgId": "",
+  "verb": "OPTIONS",
+  "path": "/",
+  "origin": "backend"
+}
+
+// PATH: /battery
+{
+  "msgId": "e4578649056b4b6f80097cf2772c5543",
+  "verb": "GET",
+  "path": "/battery",
+  "origin": "GHubSniffer",
+  "result": {
+    "code": "INVALID_ARG",
+    "what": "no handler for \u0027GET /battery\u0027."
+  }
+}
+
+// PATH: /headsets
+{
+  "msgId": "",
+  "verb": "OPTIONS",
+  "path": "/",
+  "origin": "backend"
+}
+
+// PATH: /headsets
+{
+  "msgId": "23c46307d5984d87a5e64319729cfefb",
+  "verb": "GET",
+  "path": "/headsets",
+  "origin": "GHubSniffer",
+  "result": {
+    "code": "INVALID_ARG",
+    "what": "no handler for \u0027GET /headsets\u0027."
+  }
+}
+
+// PATH: /
+{
+  "msgId": "",
+  "verb": "OPTIONS",
+  "path": "/",
+  "origin": "backend"
+}
+
+// PATH: /
+{
+  "msgId": "1c38ce0550814fac96cee649ecfb7768",
+  "verb": "GET",
+  "path": "/",
+  "origin": "GHubSniffer",
+  "result": {
+    "code": "INVALID_ARG",
+    "what": "no handler for \u0027GET /\u0027."
+  }
+}
+
+// PATH: /sdkevents/applist
+{
+  "msgId": "",
+  "verb": "OPTIONS",
+  "path": "/",
+  "origin": "backend"
+}
+
+// PATH: /sdkevents/applist
+{
+  "msgId": "b25626ddd5c24934aefc1b87dca142b8",
+  "verb": "GET",
+  "path": "/sdkevents/applist",
+  "origin": "GHubSniffer",
+  "result": {
+    "code": "INVALID_ARG",
+    "what": "no handler for \u0027GET /sdkevents/applist\u0027."
+  }
+}
+
