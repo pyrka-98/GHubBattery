@@ -13,6 +13,7 @@ public sealed class TrayManager : IDisposable
     private readonly StartupManager       _startup;
     private readonly AppSettings          _settings;
     private readonly BatteryHistory       _history;
+    private readonly GHubConnector        _connector;
     private readonly ILogger<TrayManager> _log;
 
     private readonly HashSet<string> _notifiedLow = [];
@@ -31,12 +32,14 @@ public sealed class TrayManager : IDisposable
         StartupManager startup,
         AppSettings settings,
         BatteryHistory history,
+        GHubConnector connector,
         ILogger<TrayManager> log)
     {
         _store    = store;
         _startup  = startup;
         _settings = settings;
         _history  = history;
+        _connector = connector;
         _log      = log;
 
         _tray = new NotifyIcon { Text = AppName, Visible = true };
@@ -172,9 +175,17 @@ public sealed class TrayManager : IDisposable
         // ── Actions ──
         menu.Items.Add(MakeItem("Refresh now", () =>
         {
-            RefreshIconFromStore();
-            UpdateTooltip();
-            BuildContextMenu();
+            _ = Task.Run(async () =>
+            {
+                await _connector.SendGetBatteryAsync(CancellationToken.None);
+                await Task.Delay(500);
+                InvokeOnUiThread(() =>
+                {
+                    RefreshIconFromStore();
+                    UpdateTooltip();
+                    BuildContextMenu();
+                });
+            });
         }));
 
         menu.Items.Add(MakeItem("Open battery history log", () =>

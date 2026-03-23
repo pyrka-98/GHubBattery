@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GHubBattery")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11a05c39ec9e7585bad180588001df15168e0cf4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34dec98aedacfb00ee60ecf27edb1b08293e3575")]
 [assembly: System.Reflection.AssemblyProductAttribute("GHubBattery")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GHubBattery")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

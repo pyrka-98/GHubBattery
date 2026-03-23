@@ -29,7 +29,7 @@ public sealed class SettingsWindow : Form
         MaximizeBox     = false;
         MinimizeBox     = false;
         StartPosition   = FormStartPosition.CenterScreen;
-        ClientSize      = new Size(420, 380);
+        ClientSize      = new Size(420, 420);
         Font            = new Font("Segoe UI", 10f);
         BackColor       = BgColor;
         ForeColor       = Color.White;

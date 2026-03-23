@@ -9,7 +9,7 @@ A lightweight Windows system tray app that shows your Logitech wireless headset 
 - **Live battery % in the tray icon** — large bold number, color-coded green / amber / red
 - **Multiple devices** — tracks all G HUB wireless devices, icon shows the lowest battery
 - **Low battery notifications** — Windows balloon at configurable thresholds
-- **Polling fallback** — re-fetches battery every 60 seconds so the number recovers after sleep/wake
+- **Polling fallback** — re-subscribes to battery updates every 60 seconds so the number recovers after sleep/wake
 - **Battery history log** — every reading appended to a JSON-lines file in `%LOCALAPPDATA%\GHubBatteryTray\`
 - **Settings dialog** — configure thresholds, poll interval, notification toggle
 - **Run at Windows startup** — one toggle in the right-click menu, no admin rights needed
@@ -50,17 +50,6 @@ cd src
 dotnet run
 ```
 
-## Update checker setup
-
-Open `src\UpdateChecker.cs` and set your GitHub username and repo name:
-
-```csharp
-private const string Owner = "pyrka-98";
-private const string Repo  = "GHubBattery";
-```
-
-The app checks for new releases 10 seconds after launch and shows a tray balloon if a newer version is available.
-
 ## Tray icon colors
 
 | Color | Meaning |
@@ -77,7 +66,7 @@ A small yellow dot in the corner of the icon indicates the device is charging.
 | Item | Action |
 |------|--------|
 | Device rows | Shows name, %, charging state (display only) |
-| Refresh now | Force-fetches latest battery from G HUB |
+| Refresh now | Force-fetches latest battery from G HUB immediately |
 | Open battery history log | Opens the `.jsonl` log file in your default text editor |
 | Settings... | Opens the settings dialog |
 | Run at Windows startup | Toggles the Windows registry run key |
@@ -91,7 +80,7 @@ Accessible via right-click → **Settings...**
 |---------|---------|-------------|
 | Low battery warning | 20% | % that triggers a balloon notification |
 | Critical battery level | 10% | % shown as an error-level balloon |
-| Poll interval | 60s | How often to force-refresh via GET request |
+| Poll interval | 60s | How often to force-refresh battery data |
 | Show all devices | On | Show all devices in menu vs. only the worst |
 | Enable notifications | On | Toggle low-battery balloon notifications |
 
@@ -140,7 +129,7 @@ G HUB exposes a local WebSocket server on `ws://localhost:9010`. The app:
 1. Connects and subscribes to `/battery/state/changed` and `/devices/state/changed`
 2. Sends `GET /devices/list` on connect to seed device names immediately
 3. Receives pushed battery updates in real time
-4. Falls back to polling `GET /devices/list` every 60 seconds to recover from missed pushes
+4. Re-subscribes to `/battery/state/changed` every 60 seconds as a fallback to recover from missed pushes (e.g. after sleep/wake)
 5. Re-renders the tray icon on every change using GDI+
 6. Auto-reconnects with exponential back-off if G HUB restarts
 
@@ -153,10 +142,10 @@ G HUB exposes a local WebSocket server on `ws://localhost:9010`. The app:
 **Battery percentage not updating**
 - Wait up to 60 seconds for the polling fallback to kick in
 - Try right-click → Refresh now
-- Turn your device off & on
+- Turn your device off and back on
 
 **No devices shown**
-- Your device may use different field names in G HUB's API. Check `%LOCALAPPDATA%\GHubBatteryTray\crash.log` for errors
+- Your device may use different field names in G HUB's API — check `%LOCALAPPDATA%\GHubBatteryTray\crash.log` for errors
 - The G HUB API is undocumented and field names vary across versions
 
 **App crashes silently**

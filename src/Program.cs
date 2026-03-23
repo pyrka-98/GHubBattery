@@ -36,7 +36,7 @@ var store      = new BatteryStateStore(loggerFactory.CreateLogger<BatteryStateSt
 var startup    = new StartupManager(loggerFactory.CreateLogger<StartupManager>());
 var history    = new BatteryHistory(loggerFactory.CreateLogger<BatteryHistory>());
 var connector  = new GHubConnector(loggerFactory.CreateLogger<GHubConnector>());
-var tray       = new TrayManager(store, startup, settings, history, loggerFactory.CreateLogger<TrayManager>());
+var tray = new TrayManager(store, startup, settings, history, connector, loggerFactory.CreateLogger<TrayManager>());
 var updater    = new UpdateChecker(loggerFactory.CreateLogger<UpdateChecker>());
 
 connector.MessageReceived += raw =>
