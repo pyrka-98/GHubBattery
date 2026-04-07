@@ -22,9 +22,9 @@ public sealed class GHubConnector : IAsyncDisposable
         "/battery/state/changed",
         "/devices/state/changed",
     ];
-
-    private static readonly TimeSpan ReadTimeout  = TimeSpan.FromSeconds(30);
+    
     private static readonly TimeSpan PollInterval = TimeSpan.FromSeconds(60);
+    private static readonly TimeSpan ReadTimeout = TimeSpan.FromMinutes(5);
 
     private static readonly TimeSpan[] BackOffSteps =
     [
@@ -38,20 +38,45 @@ public sealed class GHubConnector : IAsyncDisposable
     private ClientWebSocket? _ws;
     private int  _reconnectAttempts;
     private bool _disposed;
+    private bool _reconnecting;
 
     public event Action<string>? MessageReceived;
     public event Action<bool>?   Connected;
 
     public GHubConnector(ILogger<GHubConnector> log) => _log = log;
 
-    public async Task SendGetBatteryAsync(CancellationToken ct)
+    public Task SendGetBatteryAsync(CancellationToken ct)
     {
-        if (_ws?.State != WebSocketState.Open) return;
-        // Re-subscribe to battery path — G HUB will re-send current state
-        var msg   = new { msgId = Guid.NewGuid().ToString("N"), verb = "SUBSCRIBE", origin = Origin, path = "/battery/state/changed" };
-        var bytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(msg));
-        await _ws.SendAsync(bytes, WebSocketMessageType.Text, true, ct);
-        _log.LogDebug("Sent re-SUBSCRIBE -> /battery/state/changed");
+        if (_reconnecting)
+        {
+            _log.LogDebug("Refresh skipped — already reconnecting.");
+            return Task.CompletedTask;
+        }
+
+        _reconnecting = true;
+        _log.LogDebug("Refresh triggered — forcing full reconnect.");
+
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                if (_ws?.State == WebSocketState.Open)
+                    await _ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "Refresh", ct);
+                _ws?.Dispose();
+                _ws = null;
+                await ConnectAndReceiveAsync(ct);
+            }
+            catch (Exception ex)
+            {
+                _log.LogWarning("Refresh reconnect failed: {Error}", ex.Message);
+            }
+            finally
+            {
+                _reconnecting = false;
+            }
+        }, ct);
+
+        return Task.CompletedTask;
     }
 
     public async Task RunAsync(CancellationToken ct)
@@ -59,18 +84,24 @@ public sealed class GHubConnector : IAsyncDisposable
         // Polling timer fires every 60s — sends GET /devices/list even if no push arrived
         using var pollTimer = new System.Timers.Timer(PollInterval.TotalMilliseconds);
         pollTimer.Elapsed += async (_, _) =>
-    {
-        try
         {
-            await SendGetDeviceListAsync(ct);
-            await SendGetBatteryAsync(ct);
-        }
-        catch { }
-    };
+            try
+            {
+                await SendGetDeviceListAsync(ct);
+                await SendGetBatteryAsync(ct);
+            }
+            catch { }
+        };
         pollTimer.Start();
 
         while (!ct.IsCancellationRequested)
         {
+            if (_reconnecting)
+            {
+                await Task.Delay(500, ct);
+                continue;
+            }
+
             try
             {
                 await ConnectAndReceiveAsync(ct);
@@ -81,6 +112,8 @@ public sealed class GHubConnector : IAsyncDisposable
                 _log.LogWarning("G HUB connection lost: {Error}", ex.Message);
             }
 
+            if (_reconnecting) continue;
+
             Connected?.Invoke(false);
             var delay = BackOffSteps[Math.Min(_reconnectAttempts, BackOffSteps.Length - 1)];
             _reconnectAttempts++;
@@ -89,7 +122,7 @@ public sealed class GHubConnector : IAsyncDisposable
         }
     }
 
-    private async Task ConnectAndReceiveAsync(CancellationToken ct)
+    internal async Task ConnectAndReceiveAsync(CancellationToken ct)
     {
         _ws?.Dispose();
         _ws = new ClientWebSocket();
